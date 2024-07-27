@@ -134,7 +134,7 @@ def grid_search(X, labels, num_clusters, hyperparam_dict, save_path):
 
 
 if __name__ == "__main__":
-    imgs, labels, X = load_var("../../data/cifar10/cifar10_5000samples.pckl")
+    imgs, labels, X = load_var("../../data/cifar10/cifar10_clip_features_train.pckl")
     num_clusters = len(np.unique(labels))
     
     hyperparam_dict = {"gamma": [1, 5, 10, 15, 20, 30, 40, 50, 60, 70, 80, 90, 100],
@@ -144,7 +144,7 @@ if __name__ == "__main__":
     res = grid_search(X=X, labels=labels, 
                       num_clusters=num_clusters,
                       hyperparam_dict=hyperparam_dict, 
-                      save_path="output/EnSC.pckl")
+                      save_path="output/EnSC_all.pckl")
     
     print("the end")
 
