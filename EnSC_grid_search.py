@@ -106,6 +106,7 @@ def grid_search(X, labels, num_clusters, hyperparam_dict, save_path):
             model = ElasticNetSubspaceClustering(n_clusters=num_clusters, 
                                                  gamma=gamma, tau=tau, 
                                                  algorithm="lasso_cd").fit(X)
+            
             # print(model.labels_)
             label_list = model.labels_
             
