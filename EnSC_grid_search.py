@@ -105,7 +105,7 @@ def grid_search(X, labels, num_clusters, hyperparam_dict, save_path):
         if "NMI" not in hparam:
             model = ElasticNetSubspaceClustering(n_clusters=num_clusters, 
                                                  gamma=gamma, tau=tau, 
-                                                 algorithm="spams").fit(X)
+                                                 algorithm="lasso_cd").fit(X)
             # print(model.labels_)
             label_list = model.labels_
             
@@ -134,9 +134,9 @@ def grid_search(X, labels, num_clusters, hyperparam_dict, save_path):
 
 
 if __name__ == "__main__":
-    dataset = "cifar100_test.pckl"
+    dataset = "stl10_test.pckl"
 
-    imgs, labels, X = load_var("../../data/cifar100/{}".format(dataset))
+    imgs, labels, X = load_var("../data/data/stl10/{}".format(dataset))
     num_clusters = len(np.unique(labels))
     
     hyperparam_dict = {"gamma": [1, 5, 10, 15, 20, 30, 40, 50, 60, 70, 80, 90, 100],
