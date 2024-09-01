@@ -134,9 +134,9 @@ def grid_search(X, labels, num_clusters, hyperparam_dict, save_path):
 
 
 if __name__ == "__main__":
-    dataset = "stl10_test.pckl"
+    dataset = "fashionmnist_test.pckl"
 
-    imgs, labels, X = load_var("../data/data/stl10/{}".format(dataset))
+    imgs, labels, X = load_var("../data/data/fashionmnist/{}".format(dataset))
     num_clusters = len(np.unique(labels))
     
     hyperparam_dict = {"gamma": [1, 5, 10, 15, 20, 30, 40, 50, 60, 70, 80, 90, 100],
