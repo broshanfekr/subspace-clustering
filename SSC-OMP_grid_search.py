@@ -134,9 +134,9 @@ def grid_search(X, labels, num_clusters, hyperparam_dict, save_path):
 
 
 if __name__ == "__main__":
-    dataset = "stl10_test.pckl"
+    dataset = "cifar100_test.pckl"
 
-    imgs, labels, X = load_var("../data/data/stl10/{}".format(dataset))
+    imgs, labels, X = load_var("../../data/cifar100/{}".format(dataset))
     num_clusters = len(np.unique(labels))
     
     hyperparam_dict = {"n_nonzero": [3, 5, 10, 15],
