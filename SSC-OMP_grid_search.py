@@ -118,9 +118,9 @@ def grid_search(X, labels, num_clusters, hyperparam_dict, save_path):
             
             save_var(save_path, hyperparam_list)
             
-        row_res = "{}/{}   thr: {}, n_nonzero: {:2d}, NMI: {:.4f}, ACC: {:.4f}, ARI: {:.4f}"
+        row_res = "{}/{}   thr: {}, n_nonzero: {:2d}, ACC: {:.4f}, NMI: {:.4f}, ARI: {:.4f}"
         row_res = row_res.format(hyper_idx, len(hyperparam_list), thr, n_nonzero, 
-                                 hparam["NMI"], hparam["ACC"], hparam["ARI"])
+                                 hparam["ACC"], hparam["NMI"], hparam["ARI"])
         print(row_res)
         
         if hparam["NMI"] > best_nmi:
@@ -134,7 +134,9 @@ def grid_search(X, labels, num_clusters, hyperparam_dict, save_path):
 
 
 if __name__ == "__main__":
-    imgs, labels, X = load_var("../../data/cifar10/cifar10_5000samples.pckl")
+    dataset = "stl10_test.pckl"
+
+    imgs, labels, X = load_var("../data/data/stl10/{}".format(dataset))
     num_clusters = len(np.unique(labels))
     
     hyperparam_dict = {"n_nonzero": [3, 5, 10, 15],
@@ -144,7 +146,7 @@ if __name__ == "__main__":
     res = grid_search(X=X, labels=labels, 
                       num_clusters=num_clusters,
                       hyperparam_dict=hyperparam_dict, 
-                      save_path="output/SSC-OMP.pckl")
+                      save_path="output/SSC-OMP_{}".format(dataset))
     
     print("the end")
 
