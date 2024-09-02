@@ -119,9 +119,9 @@ def grid_search(X, labels, num_clusters, hyperparam_dict, save_path):
             
             save_var(save_path, hyperparam_list)
             
-        row_res = "{}/{}   tau: {:.2f}, gamma: {:3d}, NMI: {:.4f}, ACC: {:.4f}, ARI: {:.4f}"
+        row_res = "{}/{}   tau: {:.2f}, gamma: {:3d}, ACC: {:.4f}, NMI: {:.4f}, ARI: {:.4f}"
         row_res = row_res.format(hyper_idx, len(hyperparam_list), tau, gamma, 
-                                 hparam["NMI"], hparam["ACC"], hparam["ARI"])
+                                 hparam["ACC"], hparam["NMI"], hparam["ARI"])
         print(row_res)
         
         if hparam["NMI"] > best_nmi:
