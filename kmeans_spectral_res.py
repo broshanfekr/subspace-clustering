@@ -37,7 +37,7 @@ def apply_kmeans_clustering(X, labels_true, num_clusters, n_init):
         nmi_lst.append(nmi_score)
         ari_lst.append(ari_score)
         
-    return {"NMI": np.mean(nmi_lst), "ARI": np.mean(ari_lst), "ACC": np.mean(acc_lst)}
+    return {"ACC": np.mean(acc_lst), "NMI": np.mean(nmi_lst), "ARI": np.mean(ari_lst)}
 
 
 def apply_spectral_clustering(X, labels_true, num_clusters):
@@ -46,7 +46,7 @@ def apply_spectral_clustering(X, labels_true, num_clusters):
     acc = clustering_accuracy(labels_true, pred_label)
     nmi = normalized_mutual_info_score(labels_true, pred_label)
     ari = adjusted_rand_score(labels_true, pred_label)
-    return {"NMI": np.mean(nmi), "ARI": np.mean(ari), "ACC": np.mean(acc)}
+    return {"ACC": np.mean(acc), "NMI": np.mean(nmi), "ARI": np.mean(ari)}
 
 
 def gen_text(kwargs):
@@ -59,13 +59,13 @@ def gen_text(kwargs):
 
 
 if __name__ == "__main__":
-    imgs, labels, X = load_var("../../data/cifar10/cifar10_5000samples.pckl")
+    imgs, labels, X = load_var("../../data/data/fashionmnist/fashionmnist_test.pckl")
     num_clusters = len(np.unique(labels))
     n_init = 10
     
     kmeans_res = apply_kmeans_clustering(X, labels, num_clusters, n_init)
     print("kmeans res: {}".format(gen_text(kmeans_res)))
     
-    spectral_res = apply_spectral_clustering(X, labels, num_clusters)
-    print("spectral res: {}".format(gen_text(spectral_res)))
+    # spectral_res = apply_spectral_clustering(X, labels, num_clusters)
+    # print("spectral res: {}".format(gen_text(spectral_res)))
     
